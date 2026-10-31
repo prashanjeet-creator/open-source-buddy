@@ -15,7 +15,7 @@ export default function ExplainPanel({ result, error }) {
     <section className="explain" aria-label="AI explanation">
       <div className="explain-head">
         <span className="provider">AI provider: {result.provider}</span>
-        <CopyPlanButton plan={result.plan} />
+        <CopyPlanButton plan={result.plan} explanation={result.markdown} />
       </div>
       <Markdown text={result.markdown} />
     </section>
