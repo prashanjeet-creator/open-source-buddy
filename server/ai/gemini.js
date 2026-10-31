@@ -97,7 +97,7 @@ export class GeminiProvider extends AIProvider {
       throw providerError('Gemini returned an unreadable response. Please try again.');
     }
 
-    const text = body.candidates?.[0]?.content?.parts?.[0]?.text;
+    const text = body?.candidates?.[0]?.content?.parts?.[0]?.text;
     if (!text) {
       throw providerError('Gemini did not return an explanation. Please try again.');
     }
@@ -110,6 +110,7 @@ export class GeminiProvider extends AIProvider {
     }
 
     if (
+      !result ||
       typeof result.markdown !== 'string' ||
       !result.markdown.trim() ||
       !Array.isArray(result.plan) ||
